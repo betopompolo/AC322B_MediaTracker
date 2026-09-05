@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".BookDetailActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Book cover image"
+            android:contentDescription="@string/book_cover_image"
             android:src="@drawable/lotr_book_cover"
             android:scaleType="fitXY"
             />
@@ -40,61 +41,18 @@
                 />
 
             <LinearLayout
+                android:id="@+id/badges_row_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_gravity="bottom"
-                    android:text="Book"
-                    android:fontFamily="@font/jetbrains_mono"
-                    android:background="@drawable/card_background"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_gravity="bottom"
-                    android:text="Book"
-                    android:fontFamily="@font/jetbrains_mono"
-                    android:background="@drawable/card_background"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_gravity="bottom"
-                    android:text="Book"
-                    android:fontFamily="@font/jetbrains_mono"
-                    android:background="@drawable/card_background"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    />
-            </LinearLayout>
+                android:orientation="horizontal" />
+
             <LinearLayout
+                android:id="@+id/badges_row_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_gravity="bottom"
-                    android:text="Book"
-                    android:fontFamily="@font/jetbrains_mono"
-                    android:background="@drawable/card_background"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    />
-            </LinearLayout>
+                />
         </LinearLayout>
     </FrameLayout>
 
@@ -140,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Reading Progress"
+            android:text="@string/reading_progress"
 
             android:textSize="24sp" />
 
@@ -170,7 +128,34 @@
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/reading_progress_indicator"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/reading_progress_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/reading_progress_back_button"
+                app:fabSize="mini"
+                app:fabCustomSize="40dp"
+                android:src="@drawable/chevron_backward_24px"
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/reading_progress_next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/reading_progress_forward_button"
+                android:src="@drawable/chevron_forward_24px"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
 
@@ -187,8 +172,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Details"
-
+            android:text="@string/details"
             android:textSize="24sp" />
 
         <com.google.android.material.divider.MaterialDivider
@@ -203,7 +187,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Author"
+                android:text="@string/author"
                  />
 
             <TextView
@@ -222,7 +206,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Publisher"
+                android:text="@string/publisher"
                  />
 
             <TextView
@@ -230,7 +214,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="George Allen &amp; Unwin"
                 android:textAlignment="textEnd"
                  />
         </LinearLayout>
@@ -242,7 +225,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="First Published"
+                android:text="@string/first_published"
                  />
 
             <TextView
@@ -261,7 +244,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Genres"
+                android:text="@string/genres"
                 />
 
             <TextView
@@ -273,17 +256,4 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Mark as reading" />
-
 </LinearLayout>

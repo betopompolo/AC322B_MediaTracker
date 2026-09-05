@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">MediaTracker</string>
     <string name="synopsis_card_header">Synopsis</string>
+    <string name="reading_progress_forward_button">Reading progress forward button</string>
+    <string name="reading_progress_back_button">Reading progress back button</string>
+    <string name="book_cover_image">Book cover image</string>
+    <string name="page">Page %1$d / %2$d</string>
+    <string name="reading_progress">Reading Progress</string>
+    <string name="details">Details</string>
+    <string name="author">Author</string>
+    <string name="publisher">Publisher</string>
+    <string name="first_published">First Published</string>
+    <string name="genres">Genres</string>
 </resources>
