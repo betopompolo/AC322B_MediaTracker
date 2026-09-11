@@ -1,6 +1,7 @@
 package com.betopompolo.mediatracker
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,10 @@ var bookDetail = BookDetail(
 )
 
 class BookDetailActivity : AppCompatActivity() {
+    companion object {
+        const val EXTRA_BOOK_ID = "book_id"
+    }
+
     private lateinit var binding: ActivityBookDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +31,13 @@ class BookDetailActivity : AppCompatActivity() {
         binding = ActivityBookDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val bookId = intent.getStringExtra(EXTRA_BOOK_ID)
+        Log.d("BookDetailActivityTag", "Book ID: $bookId")
         binding.bookTitle.text = bookDetail.title
         binding.synopsisTextView.text = bookDetail.synopsis
         binding.authorTextView.text = bookDetail.author
         binding.publisherTextView.text = bookDetail.publisher
-        binding.publisherTextView.text = bookDetail.firstPublished
+        binding.firstPublishedTextView.text = bookDetail.firstPublished
         binding.genres.text = bookDetail.genres.joinToString(", ")
 
         updateReadingProgressViews()

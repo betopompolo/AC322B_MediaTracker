@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MediaTracker</string>
+    <string name="app_name">Media Tracker</string>
     <string name="synopsis_card_header">Synopsis</string>
     <string name="reading_progress_forward_button">Reading progress forward button</string>
     <string name="reading_progress_back_button">Reading progress back button</string>
@@ -11,4 +11,7 @@
     <string name="publisher">Publisher</string>
     <string name="first_published">First Published</string>
     <string name="genres">Genres</string>
+    <string name="page_count">%1$dp</string>
+    <string name="book">Book</string>
+    <string name="item_image">Item image</string>
 </resources>
