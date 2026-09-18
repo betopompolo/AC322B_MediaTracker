@@ -5,6 +5,9 @@ import android.util.Log
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.betopompolo.mediatracker.databinding.ActivityBookDetailBinding
 import com.betopompolo.mediatracker.databinding.BadgeLayoutBinding
 
@@ -30,6 +33,8 @@ class BookDetailActivity : AppCompatActivity() {
 
         binding = ActivityBookDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.bookDetailToolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val bookId = intent.getStringExtra(EXTRA_BOOK_ID)
         Log.d("BookDetailActivityTag", "Book ID: $bookId")
@@ -70,6 +75,17 @@ class BookDetailActivity : AppCompatActivity() {
         texts.drop(3).take(3).forEach {
             addBadgeView(binding.badgesRow2, it)
         }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bookDetailToolbar) { view, insets ->
+            val statusBarInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            view.updatePadding(top = statusBarInsets.top)
+            insets
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 
     private fun addBadgeView(atRow: LinearLayout, text: String) {
@@ -105,10 +121,10 @@ data class BookDetail(
         get() = ((currentPage.toFloat() / totalPages) * 100).toInt()
 
     fun getPreviousPage(): BookDetail? {
-        try {
-            return copy(currentPage = currentPage - 1)
+        return try {
+            copy(currentPage = currentPage - 1)
         } catch (_: IllegalArgumentException) {
-            return null
+            null
         }
     }
 
